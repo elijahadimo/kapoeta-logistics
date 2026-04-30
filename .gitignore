@@ -1,0 +1,37 @@
+node_modules/
+npm-debug.log*
+
+# Build outputs
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files (but keep .vscode for project settings)
+.vscode/
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# Logs
+logs/
+*.log
+
+# Database
+*.sqlite
+*.db
+
+# Uploads
+uploads/
+temp/
+tmp/
+
+# Backups
+*.backup
+*.bak
