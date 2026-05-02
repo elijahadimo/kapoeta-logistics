@@ -643,7 +643,7 @@ function AgentDashboard() {
                     </td>
                     <td style={{ padding: '8px' }}>{s.trackingNumber}</td>
                     <td style={{ padding: '8px' }}>{s.destinationBranch?.name}</td>
-                    <td style={{ padding: '8px' }}>{s.weight} kg}</td>
+                    <td style={{ padding: '8px' }}>{s.weight} kg</td>
                   </tr>
                 ))}
               </tbody>
