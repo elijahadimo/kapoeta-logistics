@@ -54,26 +54,34 @@ function AgentDashboard() {
         </div>
         <button onClick={handleLogout} style={{ padding: '8px 16px', backgroundColor: '#FF8C00', color: '#FFFFFF', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Logout</button>
       </div>
+
       <div style={{ padding: '20px' }}>
-        <h2>My Shipments</h2>
-        <table style={{ width: '100%', borderCollapse: 'collapse', backgroundColor: 'white' }}>
-          <thead>
-            <tr style={{ backgroundColor: '#FF8C00', color: 'white' }}>
-              <th style={{ padding: '10px' }}>Tracking</th>
-              <th style={{ padding: '10px' }}>Receiver</th>
-              <th style={{ padding: '10px' }}>Status</th>
-             </tr>
-          </thead>
-          <tbody>
-            {shipments.map((s: any) => (
-              <tr key={s.id}>
-                <td style={{ padding: '10px' }}>{s.trackingNumber}</td>
-                <td style={{ padding: '10px' }}>{s.receiverName}</td>
-                <td style={{ padding: '10px' }}>{s.status}</td>
+        <h2 style={{ color: '#1a1a2e' }}>My Shipments</h2>
+        <div style={{ backgroundColor: '#FFFFFF', borderRadius: '8px', overflow: 'auto', marginTop: '10px' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <thead>
+              <tr style={{ backgroundColor: '#FF8C00', color: '#FFFFFF' }}>
+                <th style={{ padding: '10px', textAlign: 'left' }}>Tracking Number</th>
+                <th style={{ padding: '10px', textAlign: 'left' }}>Receiver Name</th>
+                <th style={{ padding: '10px', textAlign: 'left' }}>Status</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {shipments.map((s: any) => (
+                <tr key={s.id} style={{ borderBottom: '1px solid #eee' }}>
+                  <td style={{ padding: '10px' }}>{s.trackingNumber}</td>
+                  <td style={{ padding: '10px' }}>{s.receiverName}</td>
+                  <td style={{ padding: '10px' }}>{s.status}</td>
+                </tr>
+              ))}
+              {shipments.length === 0 && (
+                <tr>
+                  <td colSpan={3} style={{ padding: '20px', textAlign: 'center' }}>No shipments found</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
