@@ -1,0 +1,46 @@
+services:
+  - type: web
+    name: kapoeta-logistics-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:prod
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DB_HOST
+        fromDatabase:
+          name: kapoeta-logistics-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: kapoeta-logistics-db
+          property: port
+      - key: DB_USERNAME
+        fromDatabase:
+          name: kapoeta-logistics-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: kapoeta-logistics-db
+          property: password
+      - key: DB_DATABASE
+        fromDatabase:
+          name: kapoeta-logistics-db
+          property: database
+
+  - type: web
+    name: kapoeta-logistics-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://kapoeta-logistics-backend.onrender.com
+
+  - type: postgresql
+    name: kapoeta-logistics-db
+    plan: free
