@@ -110,7 +110,7 @@ function AgentDashboard() {
       const newShipment = response.data;
       if (selectedPhoto) await uploadPhoto(newShipment.id);
       await generateQR(newShipment.id);
-      setShowCreateForm(false);
+      setShowForm(false);
       setForm({
         senderName: '', senderPhone: '', receiverName: '', receiverPhone: '',
         itemDescription: '', weight: '', originBranchId: user.branchId || '',
@@ -219,13 +219,13 @@ function AgentDashboard() {
                 <th style={{ padding: '10px' }}>Weight</th>
                 <th style={{ padding: '10px' }}>Status</th>
                 <th style={{ padding: '10px' }}>Action</th>
-              <tr>
+              </tr>
             </thead>
             <tbody>
               {shipments.map(s => (
                 <tr key={s.id} style={{ borderBottom: '1px solid #eee' }}>
                   <td style={{ padding: '10px' }}><strong style={{ color: '#FF8C00' }}>{s.trackingNumber}</strong></td>
-                  <td style={{ padding: '10px' }}>{s.receiverName}<tr>
+                  <td style={{ padding: '10px' }}>{s.receiverName}</td>
                   <td style={{ padding: '10px' }}>{s.destinationBranch?.name}</td>
                   <td style={{ padding: '10px' }}>{s.weight} kg</td>
                   <td style={{ padding: '10px' }}><span style={getStatusBadge(s.status)}>{s.status}</span></td>
